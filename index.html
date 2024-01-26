@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geography and Science Quiz</title>
+    <title>Combined Geography and Science Quiz</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,7 +41,6 @@
 </div>
 
 <script>
-
     // Geography questions
     const geographyQuestions = [
         {
@@ -49,17 +48,6 @@
             options: ["Maldives", "Sri Lanka", "Mauritius", "Madagascar"],
             correctAnswer: "Sri Lanka"
         },
-                {
-            question: "Which country is known as the 'Land of the Rising Sun'?",
-            options: ["China", "Japan", "South Korea", "Vietnam"],
-            correctAnswer: "Japan"
-        },
-        {
-            question: "In which country is Mount Kilimanjaro, the highest mountain in Africa, located?",
-            options: ["Kenya", "Uganda", "Tanzania", "Ethiopia"],
-            correctAnswer: "Tanzania"
-        },
-    
         {
             question: "Which country is known as the 'Land of the Rising Sun'?",
             options: ["China", "Japan", "South Korea", "Vietnam"],
@@ -110,7 +98,77 @@
             options: ["Rio de Janeiro", "Sao Paulo", "Brasilia", "Salvador"],
             correctAnswer: "Brasilia"
         },
-        // Add 15 more geographical questions
+        {
+            question: "Which river is the longest in Asia?",
+            options: ["Yangtze", "Mekong", "Ganges", "Indus"],
+            correctAnswer: "Yangtze"
+        },
+        {
+            question: "Which African country is known as the 'Rainbow Nation'?",
+            options: ["Nigeria", "South Africa", "Kenya", "Egypt"],
+            correctAnswer: "South Africa"
+        },
+        {
+            question: "In which European city would you find the Eiffel Tower?",
+            options: ["Rome", "Berlin", "Paris", "London"],
+            correctAnswer: "Paris"
+        },
+        {
+            question: "What is the capital city of Japan?",
+            options: ["Seoul", "Beijing", "Tokyo", "Bangkok"],
+            correctAnswer: "Tokyo"
+        },
+        {
+            question: "Which mountain range spans over seven countries in South America?",
+            options: ["Andes", "Himalayas", "Alps", "Rockies"],
+            correctAnswer: "Andes"
+        },
+        {
+            question: "Which island country is known as the 'Land of the Long White Cloud'?",
+            options: ["Japan", "New Zealand", "Iceland", "Sri Lanka"],
+            correctAnswer: "New Zealand"
+        },
+        {
+            question: "What is the largest country by land area?",
+            options: ["Russia", "China", "United States", "Canada"],
+            correctAnswer: "Russia"
+        },
+        {
+            question: "Which U.S. state is known as the 'Sunshine State'?",
+            options: ["California", "Texas", "Florida", "Arizona"],
+            correctAnswer: "Florida"
+        },
+        {
+            question: "Which canal connects the Mediterranean Sea to the Red Sea?",
+            options: ["Panama Canal", "Suez Canal", "Kiel Canal", "Erie Canal"],
+            correctAnswer: "Suez Canal"
+        },
+        {
+            question: "In which country is the ancient city of Petra located?",
+            options: ["Greece", "Jordan", "Italy", "Turkey"],
+            correctAnswer: "Jordan"
+        },
+        {
+            question: "What is the capital city of South Korea?",
+            options: ["Seoul", "Tokyo", "Beijing", "Bangkok"],
+            correctAnswer: "Seoul"
+        },
+        {
+            question: "Which river is the longest in Europe?",
+            options: ["Danube", "Volga", "Thames", "Rhine"],
+            correctAnswer: "Volga"
+        },
+        {
+            question: "What is the smallest country in the world?",
+            options: ["Monaco", "San Marino", "Liechtenstein", "Vatican City"],
+            correctAnswer: "Vatican City"
+        },
+        {
+            question: "Which Australian city is known for the Sydney Opera House?",
+            options: ["Melbourne", "Brisbane", "Sydney", "Perth"],
+            correctAnswer: "Sydney"
+        }
+        // Add more geographical questions
     ];
 
     // Science questions
@@ -120,7 +178,7 @@
             options: ["H2O", "CO2", "O2", "N2"],
             correctAnswer: "H2O"
         },
-      
+        {
             question: "Which gas is responsible for the Earth's greenhouse effect?",
             options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Methane"],
             correctAnswer: "Carbon Dioxide"
@@ -165,11 +223,86 @@
             options: ["Mitochondria", "Nucleus", "Endoplasmic Reticulum", "Golgi Apparatus"],
             correctAnswer: "Mitochondria"
         },
-          
+        {
+            question: "What is the largest planet in our solar system?",
+            options: ["Mercury", "Venus", "Earth", "Jupiter"],
+            correctAnswer: "Jupiter"
+        },
+        {
+            question: "Which scientist proposed the heliocentric model of the solar system?",
+            options: ["Ptolemy", "Copernicus", "Galileo", "Kepler"],
+            correctAnswer: "Copernicus"
+        },
+        {
+            question: "What is the main gas responsible for the greenhouse effect on Venus?",
+            options: ["Carbon Dioxide", "Methane", "Water Vapor", "Sulfur Hexafluoride"],
+            correctAnswer: "Carbon Dioxide"
+        },
+        {
+            question: "Which element is represented by the symbol 'K' on the periodic table?",
+            options: ["Potassium", "Krypton", "Kerium", "Kobalt"],
+            correctAnswer: "Potassium"
+        },
+        {
+            question: "In physics, what does the equation E=mc^2 represent?",
+            options: ["Newton's Second Law", "Law of Gravitation", "Theory of Relativity", "Pythagorean Theorem"],
+            correctAnswer: "Theory of Relativity"
+        },
+        {
+            question: "What is the chemical symbol for gold?",
+            options: ["Au", "Ag", "Cu", "Fe"],
+            correctAnswer: "Au"
+        },
+        {
+            question: "Which gas is most abundant in Earth's atmosphere?",
+            options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Argon"],
+            correctAnswer: "Nitrogen"
+        },
+        {
+            question: "What is the process by which plants make their own food?",
+            options: ["Respiration", "Photosynthesis", "Fermentation", "Osmosis"],
+            correctAnswer: "Photosynthesis"
+        },
+        {
+            question: "Which human organ is capable of regenerating tissue?",
+            options: ["Heart", "Liver", "Lungs", "Kidneys"],
+            correctAnswer: "Liver"
+        },
+        {
+            question: "What is the smallest unit of matter?",
+            options: ["Atom", "Molecule", "Cell", "Particle"],
+            correctAnswer: "Atom"
+        },
+        {
+            question: "What is the largest mammal in the world?",
+            options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+            correctAnswer: "Blue Whale"
+        },
+        {
+            question: "Which metal is liquid at room temperature?",
+            options: ["Mercury", "Lead", "Gold", "Aluminum"],
+            correctAnswer: "Mercury"
+        },
+        {
+            question: "What is the process of converting water vapor into liquid water?",
+            options: ["Evaporation", "Condensation", "Precipitation", "Sublimation"],
+            correctAnswer: "Condensation"
+        },
+        {
+            question: "In the periodic table, which group do the noble gases belong to?",
+            options: ["Alkali Metals", "Halogens", "Transition Metals", "Noble Gases"],
+            correctAnswer: "Noble Gases"
+        },
+        {
+            question: "Which part of the human brain is responsible for emotions?",
+            options: ["Cerebrum", "Cerebellum", "Amygdala", "Hippocampus"],
+            correctAnswer: "Amygdala"
+        }
+        // Add more science questions
     ];
 
     // Combine all the questions
-   const allQuestions = geographyQuestions.concat(scienceQuestions);
+    const allQuestions = geographyQuestions.concat(scienceQuestions);
 
     let currentQuestion = 0;
 
