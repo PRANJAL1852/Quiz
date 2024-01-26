@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Geography and Science Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #quiz-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        .options button {
+            margin: 5px;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="quiz-container">
+    <h1>Geography and Science Quiz</h1>
+    <div id="question-container" class="question"></div>
+    <div id="options-container" class="options"></div>
+    <button onclick="nextQuestion()">Next</button>
+</div>
+
+<script>
+    const quizData = [];
+
+    // Geography questions
+    const geographyQuestions = [
+        {
+            question: "Which country is known as the 'Pearl of the Indian Ocean'?",
+            options: ["Maldives", "Sri Lanka", "Mauritius", "Madagascar"],
+            correctAnswer: "Sri Lanka"
+        },
+                {
+            question: "Which country is known as the 'Land of the Rising Sun'?",
+            options: ["China", "Japan", "South Korea", "Vietnam"],
+            correctAnswer: "Japan"
+        },
+        {
+            question: "In which country is Mount Kilimanjaro, the highest mountain in Africa, located?",
+            options: ["Kenya", "Uganda", "Tanzania", "Ethiopia"],
+            correctAnswer: "Tanzania"
+        },
+    
+        {
+            question: "Which country is known as the 'Land of the Rising Sun'?",
+            options: ["China", "Japan", "South Korea", "Vietnam"],
+            correctAnswer: "Japan"
+        },
+        {
+            question: "In which country is Mount Kilimanjaro, the highest mountain in Africa, located?",
+            options: ["Kenya", "Uganda", "Tanzania", "Ethiopia"],
+            correctAnswer: "Tanzania"
+        },
+        {
+            question: "What is the capital city of Australia?",
+            options: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+            correctAnswer: "Canberra"
+        },
+        {
+            question: "Which river is the longest in the world?",
+            options: ["Nile", "Amazon", "Yangtze", "Mississippi"],
+            correctAnswer: "Nile"
+        },
+        {
+            question: "Which desert is the largest in the world?",
+            options: ["Sahara", "Arabian", "Gobi", "Karakum"],
+            correctAnswer: "Sahara"
+        },
+        {
+            question: "In which continent is the Sahara Desert located?",
+            options: ["Africa", "Asia", "North America", "South America"],
+            correctAnswer: "Africa"
+        },
+        {
+            question: "Which two countries share the longest international border?",
+            options: ["Canada and USA", "Russia and China", "India and Pakistan", "Brazil and Argentina"],
+            correctAnswer: "Canada and USA"
+        },
+        {
+            question: "Which ocean is the largest?",
+            options: ["Atlantic", "Indian", "Southern", "Pacific"],
+            correctAnswer: "Pacific"
+        },
+        {
+            question: "Which country is known as the 'Land of a Thousand Lakes'?",
+            options: ["Finland", "Sweden", "Norway", "Denmark"],
+            correctAnswer: "Finland"
+        },
+        {
+            question: "What is the capital city of Brazil?",
+            options: ["Rio de Janeiro", "Sao Paulo", "Brasilia", "Salvador"],
+            correctAnswer: "Brasilia"
+        },
+        // Add 15 more geographical questions
+    ];
+
+    // Science questions
+    const scienceQuestions = [
+        {
+            question: "What is the chemical symbol for water?",
+            options: ["H2O", "CO2", "O2", "N2"],
+            correctAnswer: "H2O"
+        },
+      
+            question: "Which gas is responsible for the Earth's greenhouse effect?",
+            options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Methane"],
+            correctAnswer: "Carbon Dioxide"
+        },
+        {
+            question: "Who is known as the 'Father of Modern Physics'?",
+            options: ["Isaac Newton", "Niels Bohr", "Albert Einstein", "Galileo Galilei"],
+            correctAnswer: "Albert Einstein"
+        },
+        {
+            question: "What is the atomic number of oxygen?",
+            options: ["6", "7", "8", "9"],
+            correctAnswer: "8"
+        },
+        {
+            question: "Which planet is known as the 'Red Planet'?",
+            options: ["Venus", "Mars", "Jupiter", "Saturn"],
+            correctAnswer: "Mars"
+        },
+        {
+            question: "What is the largest organ in the human body?",
+            options: ["Heart", "Brain", "Skin", "Liver"],
+            correctAnswer: "Skin"
+        },
+        {
+            question: "Who developed the theory of relativity?",
+            options: ["Isaac Newton", "Niels Bohr", "Albert Einstein", "Stephen Hawking"],
+            correctAnswer: "Albert Einstein"
+        },
+        {
+            question: "What is the speed of light?",
+            options: ["300,000 km/s", "150,000 km/s", "450,000 km/s", "600,000 km/s"],
+            correctAnswer: "300,000 km/s"
+        },
+        {
+            question: "Which element has the chemical symbol 'Fe'?",
+            options: ["Iron", "Gold", "Silver", "Copper"],
+            correctAnswer: "Iron"
+        },
+        {
+            question: "What is the powerhouse of the cell?",
+            options: ["Mitochondria", "Nucleus", "Endoplasmic Reticulum", "Golgi Apparatus"],
+            correctAnswer: "Mitochondria"
+        },
+          
+    ];
+
+    // Combine all the questions
+    const allQuestions = quizData.concat(geographyQuestions, scienceQuestions);
+
+    let currentQuestion = 0;
+
+    function loadQuestion() {
+        const questionContainer = document.getElementById('question-container');
+        const optionsContainer = document.getElementById('options-container');
+        const currentQuizData = allQuestions[currentQuestion];
+
+        questionContainer.innerText = currentQuizData.question;
+        optionsContainer.innerHTML = "";
+
+        currentQuizData.options.forEach(option => {
+            const button = document.createElement('button');
+            button.innerText = option;
+            button.addEventListener('click', () => checkAnswer(option));
+            optionsContainer.appendChild(button);
+        });
+    }
+
+    function checkAnswer(userAnswer) {
+        const correctAnswer = allQuestions[currentQuestion].correctAnswer;
+
+        if (userAnswer === correctAnswer) {
+            // Handle correct answer
+            alert("Correct!");
+        } else {
+            // Handle wrong answer
+            alert(`Wrong! The correct answer is ${correctAnswer}`);
+        }
+
+        // Move to the next question
+        currentQuestion++;
+        if (currentQuestion < allQuestions.length) {
+            loadQuestion();
+        } else {
+            alert("Quiz completed!");
+        }
+    }
+
+    function nextQuestion() {
+        if (currentQuestion < allQuestions.length) {
+            loadQuestion();
+        } else {
+            alert("Quiz completed!");
+        }
+    }
+
+    // Initial load
+    loadQuestion();
+</script>
+
+</body>
+</html>
