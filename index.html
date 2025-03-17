@@ -3,353 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combined Geography and Science Quiz</title>
+    <title>Pragya English Point (PEP)</title>
     <style>
-        body {
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 0;
             text-align: center;
-            margin: 20px;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #f4a261;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: url('background.jpg') no-repeat center center/cover;
+            color: white;
+            position: relative;
+        }
+        #logo {
+            width: 200px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            animation: rgbEffect 3s infinite;
+        }
+        @keyframes rgbEffect {
+            0% { color: red; }
+            25% { color: blue; }
+            50% { color: green; }
+            75% { color: yellow; }
+            100% { color: red; }
+        }
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: bold;
+            animation: rgbEffect 3s infinite;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .content {
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.2rem;
             color: #333;
         }
-        #quiz-container {
-            max-width: 600px;
-            margin: auto;
+
+        /* Courses Section */
+        .courses {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .course-card {
+            background: white;
             padding: 20px;
-            border: 1px solid #ccc;
+            margin: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
+            width: 300px;
         }
-        .question {
-            margin-bottom: 10px;
+
+        /* Contact Section */
+        .contact {
+            background: #333;
+            color: white;
         }
-        .options button {
-            margin: 5px;
+        .contact p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: black;
+            color: white;
+            font-size: 1rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: green;
+            color: white;
             padding: 10px;
-            width: 100%;
+            border-radius: 50%;
+            font-size: 2rem;
             cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
     </style>
 </head>
 <body>
 
-<div id="quiz-container">
-    <h1>Geography and Science Quiz</h1>
-    <div id="question-container" class="question"></div>
-    <div id="options-container" class="options"></div>
-    <button onclick="nextQuestion()">Next</button>
-</div>
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-<script>
-    // Geography questions
-    const geographyQuestions = [
-        {
-            question: "Which country is known as the 'Pearl of the Indian Ocean'?",
-            options: ["Maldives", "Sri Lanka", "Mauritius", "Madagascar"],
-            correctAnswer: "Sri Lanka"
-        },
-        {
-            question: "Which country is known as the 'Land of the Rising Sun'?",
-            options: ["China", "Japan", "South Korea", "Vietnam"],
-            correctAnswer: "Japan"
-        },
-        {
-            question: "In which country is Mount Kilimanjaro, the highest mountain in Africa, located?",
-            options: ["Kenya", "Uganda", "Tanzania", "Ethiopia"],
-            correctAnswer: "Tanzania"
-        },
-        {
-            question: "What is the capital city of Australia?",
-            options: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
-            correctAnswer: "Canberra"
-        },
-        {
-            question: "Which river is the longest in the world?",
-            options: ["Nile", "Amazon", "Yangtze", "Mississippi"],
-            correctAnswer: "Nile"
-        },
-        {
-            question: "Which desert is the largest in the world?",
-            options: ["Sahara", "Arabian", "Gobi", "Karakum"],
-            correctAnswer: "Sahara"
-        },
-        {
-            question: "In which continent is the Sahara Desert located?",
-            options: ["Africa", "Asia", "North America", "South America"],
-            correctAnswer: "Africa"
-        },
-        {
-            question: "Which two countries share the longest international border?",
-            options: ["Canada and USA", "Russia and China", "India and Pakistan", "Brazil and Argentina"],
-            correctAnswer: "Canada and USA"
-        },
-        {
-            question: "Which ocean is the largest?",
-            options: ["Atlantic", "Indian", "Southern", "Pacific"],
-            correctAnswer: "Pacific"
-        },
-        {
-            question: "Which country is known as the 'Land of a Thousand Lakes'?",
-            options: ["Finland", "Sweden", "Norway", "Denmark"],
-            correctAnswer: "Finland"
-        },
-        {
-            question: "What is the capital city of Brazil?",
-            options: ["Rio de Janeiro", "Sao Paulo", "Brasilia", "Salvador"],
-            correctAnswer: "Brasilia"
-        },
-        {
-            question: "Which river is the longest in Asia?",
-            options: ["Yangtze", "Mekong", "Ganges", "Indus"],
-            correctAnswer: "Yangtze"
-        },
-        {
-            question: "Which African country is known as the 'Rainbow Nation'?",
-            options: ["Nigeria", "South Africa", "Kenya", "Egypt"],
-            correctAnswer: "South Africa"
-        },
-        {
-            question: "In which European city would you find the Eiffel Tower?",
-            options: ["Rome", "Berlin", "Paris", "London"],
-            correctAnswer: "Paris"
-        },
-        {
-            question: "What is the capital city of Japan?",
-            options: ["Seoul", "Beijing", "Tokyo", "Bangkok"],
-            correctAnswer: "Tokyo"
-        },
-        {
-            question: "Which mountain range spans over seven countries in South America?",
-            options: ["Andes", "Himalayas", "Alps", "Rockies"],
-            correctAnswer: "Andes"
-        },
-        {
-            question: "Which island country is known as the 'Land of the Long White Cloud'?",
-            options: ["Japan", "New Zealand", "Iceland", "Sri Lanka"],
-            correctAnswer: "New Zealand"
-        },
-        {
-            question: "What is the largest country by land area?",
-            options: ["Russia", "China", "United States", "Canada"],
-            correctAnswer: "Russia"
-        },
-        {
-            question: "Which U.S. state is known as the 'Sunshine State'?",
-            options: ["California", "Texas", "Florida", "Arizona"],
-            correctAnswer: "Florida"
-        },
-        {
-            question: "Which canal connects the Mediterranean Sea to the Red Sea?",
-            options: ["Panama Canal", "Suez Canal", "Kiel Canal", "Erie Canal"],
-            correctAnswer: "Suez Canal"
-        },
-        {
-            question: "In which country is the ancient city of Petra located?",
-            options: ["Greece", "Jordan", "Italy", "Turkey"],
-            correctAnswer: "Jordan"
-        },
-        {
-            question: "What is the capital city of South Korea?",
-            options: ["Seoul", "Tokyo", "Beijing", "Bangkok"],
-            correctAnswer: "Seoul"
-        },
-        {
-            question: "Which river is the longest in Europe?",
-            options: ["Danube", "Volga", "Thames", "Rhine"],
-            correctAnswer: "Volga"
-        },
-        {
-            question: "What is the smallest country in the world?",
-            options: ["Monaco", "San Marino", "Liechtenstein", "Vatican City"],
-            correctAnswer: "Vatican City"
-        },
-        {
-            question: "Which Australian city is known for the Sydney Opera House?",
-            options: ["Melbourne", "Brisbane", "Sydney", "Perth"],
-            correctAnswer: "Sydney"
-        }
-        // Add more geographical questions
-    ];
+    <!-- Header -->
+    <header id="home">
+        <img id="logo" src="https://raw.githubusercontent.com/PRANJAL1852/Pragya-English-Point-PEP-/refs/heads/main/Pragya%20English%20Point_20250316_215255_0000.jpg" alt="Pragya English Point Logo">
+        <h1>Pragya English Point (PEP)</h1>
+        <p class="tagline">The Best English Coaching in Rasra, UP</p>
+    </header>
 
-    // Science questions
-    const scienceQuestions = [
-        {
-            question: "What is the chemical symbol for water?",
-            options: ["H2O", "CO2", "O2", "N2"],
-            correctAnswer: "H2O"
-        },
-        {
-            question: "Which gas is responsible for the Earth's greenhouse effect?",
-            options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Methane"],
-            correctAnswer: "Carbon Dioxide"
-        },
-        {
-            question: "Who is known as the 'Father of Modern Physics'?",
-            options: ["Isaac Newton", "Niels Bohr", "Albert Einstein", "Galileo Galilei"],
-            correctAnswer: "Albert Einstein"
-        },
-        {
-            question: "What is the atomic number of oxygen?",
-            options: ["6", "7", "8", "9"],
-            correctAnswer: "8"
-        },
-        {
-            question: "Which planet is known as the 'Red Planet'?",
-            options: ["Venus", "Mars", "Jupiter", "Saturn"],
-            correctAnswer: "Mars"
-        },
-        {
-            question: "What is the largest organ in the human body?",
-            options: ["Heart", "Brain", "Skin", "Liver"],
-            correctAnswer: "Skin"
-        },
-        {
-            question: "Who developed the theory of relativity?",
-            options: ["Isaac Newton", "Niels Bohr", "Albert Einstein", "Stephen Hawking"],
-            correctAnswer: "Albert Einstein"
-        },
-        {
-            question: "What is the speed of light?",
-            options: ["300,000 km/s", "150,000 km/s", "450,000 km/s", "600,000 km/s"],
-            correctAnswer: "300,000 km/s"
-        },
-        {
-            question: "Which element has the chemical symbol 'Fe'?",
-            options: ["Iron", "Gold", "Silver", "Copper"],
-            correctAnswer: "Iron"
-        },
-        {
-            question: "What is the powerhouse of the cell?",
-            options: ["Mitochondria", "Nucleus", "Endoplasmic Reticulum", "Golgi Apparatus"],
-            correctAnswer: "Mitochondria"
-        },
-        {
-            question: "What is the largest planet in our solar system?",
-            options: ["Mercury", "Venus", "Earth", "Jupiter"],
-            correctAnswer: "Jupiter"
-        },
-        {
-            question: "Which scientist proposed the heliocentric model of the solar system?",
-            options: ["Ptolemy", "Copernicus", "Galileo", "Kepler"],
-            correctAnswer: "Copernicus"
-        },
-        {
-            question: "What is the main gas responsible for the greenhouse effect on Venus?",
-            options: ["Carbon Dioxide", "Methane", "Water Vapor", "Sulfur Hexafluoride"],
-            correctAnswer: "Carbon Dioxide"
-        },
-        {
-            question: "Which element is represented by the symbol 'K' on the periodic table?",
-            options: ["Potassium", "Krypton", "Kerium", "Kobalt"],
-            correctAnswer: "Potassium"
-        },
-        {
-            question: "In physics, what does the equation E=mc^2 represent?",
-            options: ["Newton's Second Law", "Law of Gravitation", "Theory of Relativity", "Pythagorean Theorem"],
-            correctAnswer: "Theory of Relativity"
-        },
-        {
-            question: "What is the chemical symbol for gold?",
-            options: ["Au", "Ag", "Cu", "Fe"],
-            correctAnswer: "Au"
-        },
-        {
-            question: "Which gas is most abundant in Earth's atmosphere?",
-            options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Argon"],
-            correctAnswer: "Nitrogen"
-        },
-        {
-            question: "What is the process by which plants make their own food?",
-            options: ["Respiration", "Photosynthesis", "Fermentation", "Osmosis"],
-            correctAnswer: "Photosynthesis"
-        },
-        {
-            question: "Which human organ is capable of regenerating tissue?",
-            options: ["Heart", "Liver", "Lungs", "Kidneys"],
-            correctAnswer: "Liver"
-        },
-        {
-            question: "What is the smallest unit of matter?",
-            options: ["Atom", "Molecule", "Cell", "Particle"],
-            correctAnswer: "Atom"
-        },
-        {
-            question: "What is the largest mammal in the world?",
-            options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
-            correctAnswer: "Blue Whale"
-        },
-        {
-            question: "Which metal is liquid at room temperature?",
-            options: ["Mercury", "Lead", "Gold", "Aluminum"],
-            correctAnswer: "Mercury"
-        },
-        {
-            question: "What is the process of converting water vapor into liquid water?",
-            options: ["Evaporation", "Condensation", "Precipitation", "Sublimation"],
-            correctAnswer: "Condensation"
-        },
-        {
-            question: "In the periodic table, which group do the noble gases belong to?",
-            options: ["Alkali Metals", "Halogens", "Transition Metals", "Noble Gases"],
-            correctAnswer: "Noble Gases"
-        },
-        {
-            question: "Which part of the human brain is responsible for emotions?",
-            options: ["Cerebrum", "Cerebellum", "Amygdala", "Hippocampus"],
-            correctAnswer: "Amygdala"
-        }
-        // Add more science questions
-    ];
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <p class="content">Pragya English Point (PEP) is the leading coaching center for Academic English, Competitive English, and Spoken English. We provide expert training for exams like SSC, Bank, Air Force, TGT, PGT, UPTET, CTET, CUET, and more.</p>
+    </section>
 
-    // Combine all the questions
-    const allQuestions = geographyQuestions.concat(scienceQuestions);
+    <!-- Courses Section -->
+    <section id="courses">
+        <h2 class="section-title">Our Courses</h2>
+        <div class="courses">
+            <div class="course-card">Spoken English (Basic & Advanced)</div>
+            <div class="course-card">Competitive English (SSC, Bank, Air Force, etc.)</div>
+            <div class="course-card">M.A. & B.A. Classes (Hindi & English)</div>
+            <div class="course-card">TGT, PGT, NET, JRF Preparation</div>
+            <div class="course-card">CUET, CTET, UPTET, SUPER TET Coaching</div>
+        </div>
+    </section>
 
-    let currentQuestion = 0;
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <p>📍 Address: RSS Office Road, Rasra, Uttar Pradesh, 221712</p>
+        <p>📞 Phone: 7275116996, 7619835856</p>
+    </section>
 
-    function loadQuestion() {
-        const questionContainer = document.getElementById('question-container');
-        const optionsContainer = document.getElementById('options-container');
-        const currentQuizData = allQuestions[currentQuestion];
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Pragya English Point. All Rights Reserved.
+    </footer>
 
-        questionContainer.innerText = currentQuizData.question;
-        optionsContainer.innerHTML = "";
-
-        currentQuizData.options.forEach(option => {
-            const button = document.createElement('button');
-            button.innerText = option;
-            button.addEventListener('click', () => checkAnswer(option));
-            optionsContainer.appendChild(button);
-        });
-    }
-
-    function checkAnswer(userAnswer) {
-        const correctAnswer = allQuestions[currentQuestion].correctAnswer;
-
-        if (userAnswer === correctAnswer) {
-            alert("Correct!");
-        } else {
-            alert(`Wrong! The correct answer is ${correctAnswer}`);
-        }
-
-        currentQuestion++;
-        if (currentQuestion < allQuestions.length) {
-            loadQuestion();
-        } else {
-            alert("Quiz completed!");
-        }
-    }
-
-    function nextQuestion() {
-        if (currentQuestion < allQuestions.length) {
-            loadQuestion();
-        } else {
-            alert("Quiz completed!");
-        }
-    }
-
-    // Initial load
-    loadQuestion();
-</script>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/7619835856" class="whatsapp">💬</a>
 
 </body>
 </html>
