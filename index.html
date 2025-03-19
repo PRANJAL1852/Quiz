@@ -3,193 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pragya English Point (PEP)</title>
+    <title>India Quiz Challenge</title>
     <style>
-        /* General Styling */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
         }
+
         body {
-            background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
-        /* Navigation Bar */
-        nav {
-            position: fixed;
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
             width: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            padding: 15px 0;
-            text-align: center;
-            z-index: 1000;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            display: inline-block;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-        nav a:hover {
-            color: #f4a261;
-        }
-
-        /* Header Section */
-        header {
-            text-align: center;
-            padding: 100px 20px;
-            background: url('background.jpg') no-repeat center center/cover;
-            color: white;
-            position: relative;
-        }
-        #logo {
-            width: 200px;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            animation: rgbEffect 3s infinite;
-        }
-        @keyframes rgbEffect {
-            0% { color: red; }
-            25% { color: blue; }
-            50% { color: green; }
-            75% { color: yellow; }
-            100% { color: red; }
-        }
-        .tagline {
-            font-size: 1.5rem;
-            font-weight: bold;
-            animation: rgbEffect 3s infinite;
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 20px;
-            text-align: center;
-        }
-        .section-title {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .content {
             max-width: 800px;
-            margin: auto;
-            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .register-section, .quiz-section, .leaderboard-section {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+        }
+
+        input {
+            background: #f0f2f5;
             color: #333;
         }
 
-        /* Courses Section */
-        .courses {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .course-card {
-            background: white;
-            padding: 20px;
-            margin: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            width: 300px;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #333;
+        button {
+            background: linear-gradient(45deg, #ff4757, #ff6b81);
             color: white;
-        }
-        .contact p {
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: black;
-            color: white;
-            font-size: 1rem;
-        }
-
-        /* Floating WhatsApp Button */
-        .whatsapp {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: green;
-            color: white;
-            padding: 10px;
-            border-radius: 50%;
-            font-size: 2rem;
             cursor: pointer;
-            animation: bounce 2s infinite;
+            transition: transform 0.2s ease;
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .quiz-question {
+            background: linear-gradient(45deg, #45aaf2, #778beb);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .options button {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 5px 0;
+            width: 100%;
+        }
+
+        .options button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .leaderboard-section {
+            text-align: center;
+        }
+
+        .leaderboard-list {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .leaderboard-list li {
+            background: linear-gradient(45deg, #feca57, #ff9f43);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 15px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .progress {
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(45deg, #00ddeb, #54a0ff);
+            border-radius: 5px;
+            transition: width 0.3s ease;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>India Quiz Challenge</h1>
 
-    <!-- Navigation -->
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#courses">Courses</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <!-- Header -->
-    <header id="home">
-        <img id="logo" src="https://raw.githubusercontent.com/PRANJAL1852/Pragya-English-Point-PEP-/refs/heads/main/Pragya%20English%20Point_20250316_215255_0000.jpg" alt="Pragya English Point Logo">
-        <h1>Pragya English Point (PEP)</h1>
-        <p class="tagline">The Best English Coaching in Rasra, UP</p>
-    </header>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title">About Us</h2>
-        <p class="content">Pragya English Point (PEP) is the leading coaching center for Academic English, Competitive English, and Spoken English. We provide expert training for exams like SSC, Bank, Air Force, TGT, PGT, UPTET, CTET, CUET, and more.</p>
-    </section>
-
-    <!-- Courses Section -->
-    <section id="courses">
-        <h2 class="section-title">Our Courses</h2>
-        <div class="courses">
-            <div class="course-card">Spoken English (Basic & Advanced)</div>
-            <div class="course-card">Competitive English (SSC, Bank, Air Force, etc.)</div>
-            <div class="course-card">M.A. & B.A. Classes (Hindi & English)</div>
-            <div class="course-card">TGT, PGT, NET, JRF Preparation</div>
-            <div class="course-card">CUET, CTET, UPTET, SUPER TET Coaching</div>
+        <div class="register-section active" id="registerSection">
+            <input type="text" id="playerName" placeholder="Enter your name">
+            <button onclick="startQuiz()">Register & Start Quiz</button>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2 class="section-title">Contact Us</h2>
-        <p>📍 Address: RSS Office Road, Rasra, Uttar Pradesh, 221712</p>
-        <p>📞 Phone: 7275116996, 7619835856</p>
-    </section>
+        <div class="quiz-section" id="quizSection">
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="quiz-question" id="question"></div>
+            <div class="options" id="options"></div>
+        </div>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2025 Pragya English Point. All Rights Reserved.
-    </footer>
+        <div class="leaderboard-section" id="leaderboardSection">
+            <h2>Leaderboard</h2>
+            <ul class="leaderboard-list" id="leaderboard"></ul>
+            <button onclick="restartQuiz()">Play Again</button>
+        </div>
+    </div>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/7619835856" class="whatsapp">💬</a>
+    <script>
+        const questions = [
+            // Geography Questions (15)
+            { q: "What is the capital of India?", o: ["Delhi", "Mumbai", "Kolkata", "Chennai"], a: 0 },
+            { q: "Which is the longest river in India?", o: ["Ganga", "Yamuna", "Brahmaputra", "Godavari"], a: 0 },
+            // Add 13 more geography questions...
 
+            // Political Science Questions (15)
+            { q: "Who was India's first Prime Minister?", o: ["Nehru", "Gandhi", "Patel", "Ambedkar"], a: 0 },
+            { q: "How many states are there in India?", o: ["28", "29", "27", "30"], a: 0 },
+            // Add 13 more political science questions...
+
+            // History Questions (15)
+            { q: "When did India gain independence?", o: ["1947", "1950", "1945", "1948"], a: 0 },
+            { q: "Who was the last Mughal Emperor?", o: ["Bahadur Shah II", "Akbar", "Aurangzeb", "Shah Jahan"], a: 0 }
+            // Add 13 more history questions...
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let playerName = "";
+        let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+
+        function startQuiz() {
+            playerName = document.getElementById('playerName').value.trim();
+            if (!playerName) {
+                alert("Please enter your name!");
+                return;
+            }
+            document.getElementById('registerSection').classList.remove('active');
+            document.getElementById('quizSection').classList.add('active');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            document.getElementById('question').innerHTML = `<h3>${currentQuestion + 1}. ${q.q}</h3>`;
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            q.o.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.textContent = option;
+                btn.onclick = () => checkAnswer(index);
+                optionsDiv.appendChild(btn);
+            });
+            updateProgress();
+        }
+
+        function checkAnswer(selected) {
+            if (selected === questions[currentQuestion].a) score++;
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                showLeaderboard();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestion / questions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+
+        function showLeaderboard() {
+            document.getElementById('quizSection').classList.remove('active');
+            document.getElementById('leaderboardSection').classList.add('active');
+            leaderboard.push({ name: playerName, score: score });
+            leaderboard.sort((a, b) => b.score - a.score);
+            localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+            
+            const leaderboardList = document.getElementById('leaderboard');
+            leaderboardList.innerHTML = '';
+            leaderboard.forEach(player => {
+                const li = document.createElement('li');
+                li.textContent = `${player.name}: ${player.score}/${questions.length}`;
+                leaderboardList.appendChild(li);
+            });
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('leaderboardSection').classList.remove('active');
+            document.getElementById('registerSection').classList.add('active');
+            document.getElementById('playerName').value = '';
+        }
+    </script>
 </body>
 </html>
