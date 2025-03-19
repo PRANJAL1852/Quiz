@@ -3,334 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>India Quiz Odyssey</title>
+    <title>India Quest</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(45deg, #1a1a2e, #16213e);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-
-        .container {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            padding: 40px;
-            width: 100%;
-            max-width: 900px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: glow 15s infinite alternate;
-        }
-
-        @keyframes glow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        h1 {
-            color: #e94560;
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 3em;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: linear-gradient(45deg, #e94560, #0f3460);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .register-section, .quiz-section, .leaderboard-section {
-            display: none;
-            position: relative;
-            z-index: 1;
-        }
-
-        .active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        input, button {
-            width: 100%;
-            padding: 15px;
-            margin: 15px 0;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            transition: all 0.3s ease;
-        }
-
-        input {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding-left: 20px;
-        }
-
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #e94560;
-            box-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
-        }
-
-        button {
-            background: linear-gradient(45deg, #e94560, #f39c12);
-            color: white;
-            cursor: pointer;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.4);
-        }
-
-        .quiz-question {
-            background: linear-gradient(135deg, #0f3460, #1a1a2e);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 20px 0;
-            color: #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .options button {
-            background: linear-gradient(45deg, #533483, #e94560);
-            margin: 10px 0;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .options button:hover {
-            background: linear-gradient(45deg, #e94560, #533483);
-            transform: translateX(5px);
-        }
-
-        .leaderboard-section {
-            text-align: center;
-        }
-
-        .leaderboard-list {
-            list-style: none;
-            padding: 20px;
-        }
-
-        .leaderboard-list li {
-            background: linear-gradient(45deg, #f39c12, #e94560);
-            margin: 15px 0;
-            padding: 20px;
-            border-radius: 15px;
-            color: #fff;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .leaderboard-list li:hover {
-            transform: scale(1.03);
-        }
-
-        .progress {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(45deg, #e94560, #f39c12);
-            border-radius: 4px;
-            transition: width 0.5s ease;
-            box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(45deg, #1a1a2e, #16213e); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 30px; max-width: 800px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+        h1 { color: #e94560; text-align: center; margin-bottom: 20px; font-size: 2em; }
+        .language-bar { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .language-bar button { background: rgba(255, 255, 255, 0.2); border: none; color: #fff; padding: 5px 15px; border-radius: 15px; cursor: pointer; }
+        .language-bar button:hover, .language-bar button.active { background: #e94560; }
+        .register-section, .quiz-section, .leaderboard-section { display: none; }
+        .active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        input, button { width: 100%; padding: 12px; margin: 10px 0; border: none; border-radius: 25px; }
+        input { background: rgba(255, 255, 255, 0.1); color: #fff; }
+        button { background: #e94560; color: white; cursor: pointer; }
+        button:hover { background: #f39c12; }
+        .quiz-question { background: #0f3460; padding: 20px; border-radius: 10px; color: #fff; }
+        .options button { background: #533483; margin: 5px 0; }
+        .progress { height: 5px; background: rgba(255, 255, 255, 0.1); margin: 10px 0; }
+        .progress-bar { height: 100%; background: #e94560; transition: width 0.3s; }
+        .leaderboard-list li { background: #e94560; margin: 10px 0; padding: 15px; border-radius: 10px; color: #fff; }
+        .wrong-answers { margin-top: 15px; padding: 15px; background: rgba(255, 255, 255, 0.1); color: #fff; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>India Quiz Odyssey</h1>
-
+        <div class="language-bar" id="languageBar"></div>
+        <h1>India Quest</h1>
         <div class="register-section active" id="registerSection">
             <input type="text" id="playerName" placeholder="Enter Your Name">
-            <button onclick="startQuiz()">Embark on Journey</button>
+            <button onclick="startQuiz()">Start Quest</button>
         </div>
-
         <div class="quiz-section" id="quizSection">
-            <div class="progress">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
+            <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
             <div class="quiz-question" id="question"></div>
             <div class="options" id="options"></div>
         </div>
-
         <div class="leaderboard-section" id="leaderboardSection">
-            <h2>Hall of Legends</h2>
             <ul class="leaderboard-list" id="leaderboard"></ul>
-            <button onclick="restartQuiz()">New Adventure</button>
+            <div class="wrong-answers" id="wrongAnswers"></div>
+            <button onclick="restartQuiz()">Try Again</button>
         </div>
     </div>
 
     <script>
-        const questions = [
-            // Geography Questions (15)
-            { q: "What is the capital of India?", o: ["Delhi", "Mumbai", "Kolkata", "Chennai"], a: 0 },
-            { q: "Which is the longest river in India?", o: ["Ganga", "Yamuna", "Brahmaputra", "Godavari"], a: 0 },
-            { q: "Which state is known as the 'Land of Five Rivers'?", o: ["Punjab", "Haryana", "Gujarat", "Rajasthan"], a: 0 },
-            { q: "Which is the largest desert in India?", o: ["Thar", "Kutch", "Ladakh", "Sundarbans"], a: 0 },
-            { q: "Which mountain range separates India from China?", o: ["Himalayas", "Aravalli", "Vindhya", "Satpura"], a: 0 },
-            { q: "Which is India's largest state by area?", o: ["Rajasthan", "Madhya Pradesh", "Maharashtra", "Uttar Pradesh"], a: 0 },
-            { q: "Which sea borders India to the southwest?", o: ["Arabian Sea", "Bay of Bengal", "Indian Ocean", "Andaman Sea"], a: 0 },
-            { q: "Which is the southernmost point of India?", o: ["Indira Point", "Kanyakumari", "Chennai", "Kochi"], a: 0 },
-            { q: "Which state has the longest coastline?", o: ["Gujarat", "Tamil Nadu", "Andhra Pradesh", "Maharashtra"], a: 0 },
-            { q: "Which river is known as the 'Sorrow of Bihar'?", o: ["Kosi", "Ganga", "Son", "Gandak"], a: 0 },
-            { q: "Which is the highest peak in India?", o: ["Kanchenjunga", "Everest", "Nanda Devi", "K2"], a: 0 },
-            { q: "Which state is famous for the Sundarbans?", o: ["West Bengal", "Odisha", "Assam", "Bihar"], a: 0 },
-            { q: "Which is India's largest freshwater lake?", o: ["Wular Lake", "Dal Lake", "Chilika Lake", "Vembanad Lake"], a: 0 },
-            { q: "Which plateau covers most of South India?", o: ["Deccan", "Malwa", "Chota Nagpur", "Meghalaya"], a: 0 },
-            { q: "Which pass connects India and Tibet?", o: ["Nathu La", "Rohtang", "Zoji La", "Bara-lacha"], a: 0 },
+        const languages = ["English", "Hindi"];
+        let selectedLanguage = "English";
+        const translations = {
+            "English": { title: "India Quest", placeholder: "Enter Your Name", start: "Start Quest", tryAgain: "Try Again", mistakes: "Your Mistakes", allCorrect: "All correct!" },
+            "Hindi": { title: "भारत खोज", placeholder: "अपना नाम दर्ज करें", start: "खोज शुरू करें", tryAgain: "फिर से प्रयास करें", mistakes: "आपकी गलतियाँ", allCorrect: "सब सही!" }
+        };
+        const questions = {
+            "English": [
+                { q: "Which is the smallest state in India by area?", o: ["Goa", "Sikkim", "Tripura", "Nagaland"], a: 0 },
+                { q: "Which river flows through the Thar Desert?", o: ["Luni", "Sutlej", "Sabarmati", "Mahi"], a: 0 },
+                { q: "Which state is known as the 'Spice Garden of India'?", o: ["Kerala", "Tamil Nadu", "Karnataka", "Andhra Pradesh"], a: 0 },
+                { q: "Which is the largest saltwater lake in India?", o: ["Chilika", "Sambhar", "Pulicat", "Kolleru"], a: 0 },
+                { q: "Which city is called the 'Silicon Valley of India'?", o: ["Bengaluru", "Hyderabad", "Pune", "Chennai"], a: 0 },
+                { q: "Which state shares its border with seven states?", o: ["Assam", "Uttar Pradesh", "Madhya Pradesh", "Chhattisgarh"], a: 0 },
+                { q: "Which is the wettest place in India?", o: ["Mawsynram", "Cherrapunji", "Darjeeling", "Agumbe"], a: 0 },
+                { q: "Which island group lies in the Bay of Bengal?", o: ["Andaman and Nicobar", "Lakshadweep", "Daman and Diu", "Pondicherry"], a: 0 },
+                { q: "Which river forms the Sundarbans Delta?", o: ["Ganga", "Brahmaputra", "Hooghly", "Meghna"], a: 0 },
+                { q: "Which state is known for its tea gardens?", o: ["Assam", "West Bengal", "Himachal Pradesh", "Uttarakhand"], a: 0 },
+                { q: "Which is the highest dam in India?", o: ["Tehri", "Bhakra", "Hirakud", "Sardar Sarovar"], a: 0 },
+                { q: "Which state has the most national parks?", o: ["Madhya Pradesh", "Rajasthan", "Uttarakhand", "Assam"], a: 0 },
+                { q: "Which city lies on the banks of the Yamuna?", o: ["Delhi", "Lucknow", "Kanpur", "Varanasi"], a: 0 },
+                { q: "Which is India's only active volcano?", o: ["Barren Island", "Narcondam", "Deccan Traps", "Dhinodhar"], a: 0 },
+                { q: "Which state is the largest producer of saffron?", o: ["Jammu & Kashmir", "Himachal Pradesh", "Uttarakhand", "Sikkim"], a: 0 },
+                { q: "Who is the current President of India (as of 2025)?", o: ["Droupadi Murmu", "Ram Nath Kovind", "Pranab Mukherjee", "A.P.J. Abdul Kalam"], a: 0 },
+                { q: "Which is the largest state by Lok Sabha seats?", o: ["Uttar Pradesh", "Maharashtra", "West Bengal", "Bihar"], a: 0 },
+                { q: "Who appoints the Chief Justice of India?", o: ["President", "Prime Minister", "Parliament", "Supreme Court"], a: 0 },
+                { q: "Which article provides for the abolition of untouchability?", o: ["Article 17", "Article 15", "Article 21", "Article 25"], a: 0 },
+                { q: "How many Union Territories are there in India?", o: ["8", "7", "9", "10"], a: 0 },
+                { q: "Which body conducts national elections?", o: ["Election Commission", "Parliament", "Supreme Court", "Home Ministry"], a: 0 },
+                { q: "Who was India's longest-serving Prime Minister?", o: ["Jawaharlal Nehru", "Indira Gandhi", "Narendra Modi", "Manmohan Singh"], a: 0 },
+                { q: "Which state has a bicameral legislature?", o: ["Karnataka", "Gujarat", "Rajasthan", "Kerala"], a: 0 },
+                { q: "Which amendment introduced Panchayati Raj?", o: ["73rd", "74th", "42nd", "61st"], a: 0 },
+                { q: "Who can remove the Vice President of India?", o: ["Parliament", "President", "Supreme Court", "Prime Minister"], a: 0 },
+                { q: "Which is the smallest Lok Sabha constituency by area?", o: ["Lakshadweep", "Chandni Chowk", "Daman and Diu", "Puducherry"], a: 0 },
+                { q: "Which article defines Fundamental Duties?", o: ["Article 51A", "Article 21", "Article 19", "Article 32"], a: 0 },
+                { q: "Who was the first Speaker of Lok Sabha?", o: ["G.V. Mavalankar", "M.A. Ayyangar", "Sardar Hukam Singh", "Neelam Sanjiva Reddy"], a: 0 },
+                { q: "Which state was the first to implement GST?", o: ["Assam", "Haryana", "Jammu & Kashmir", "Gujarat"], a: 0 },
+                { q: "Which ministry handles foreign affairs?", o: ["External Affairs", "Home Affairs", "Defence", "Finance"], a: 0 },
+                { q: "Who discovered the sea route to India?", o: ["Vasco da Gama", "Christopher Columbus", "Ferdinand Magellan", "Marco Polo"], a: 0 },
+                { q: "Which emperor built the Red Fort?", o: ["Shah Jahan", "Akbar", "Jahangir", "Babur"], a: 0 },
+                { q: "When did the Battle of Haldighati take place?", o: ["1576", "1526", "1757", "1857"], a: 0 },
+                { q: "Who founded the city of Kolkata?", o: ["Job Charnock", "Robert Clive", "Warren Hastings", "Lord Dalhousie"], a: 0 },
+                { q: "Which ruler introduced the policy of 'Doctrine of Lapse'?", o: ["Lord Dalhousie", "Lord Wellesley", "Lord Cornwallis", "Lord Curzon"], a: 0 },
+                { q: "When was the Indian National Congress founded?", o: ["1885", "1905", "1919", "1947"], a: 0 },
+                { q: "Who was the leader of the 1857 Revolt in Delhi?", o: ["Bahadur Shah Zafar", "Rani Lakshmibai", "Tatya Tope", "Nana Sahib"], a: 0 },
+                { q: "Which dynasty ruled during the Golden Age of India?", o: ["Gupta", "Maurya", "Chola", "Mughal"], a: 0 },
+                { q: "When did Ashoka embrace Buddhism?", o: ["After Kalinga War", "Before Kalinga War", "During Mauryan War", "After Gupta War"], a: 0 },
+                { q: "Who wrote the Arthashastra?", o: ["Chanakya", "Kalidasa", "Tulsidas", "Valmiki"], a: 0 },
+                { q: "Which event marked the beginning of British rule?", o: ["Battle of Plassey", "Battle of Buxar", "Sepoy Mutiny", "Dandi March"], a: 0 },
+                { q: "Who was the first woman ruler of Delhi?", o: ["Razia Sultana", "Chand Bibi", "Nur Jahan", "Jodha Bai"], a: 0 },
+                { q: "When was the partition of Bengal annulled?", o: ["1911", "1905", "1920", "1947"], a: 0 },
+                { q: "Which king built the Qutub Minar?", o: ["Qutb-ud-din Aibak", "Iltutmish", "Alauddin Khilji", "Firoz Shah"], a: 0 },
+                { q: "Who launched the Swadeshi Movement?", o: ["Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Lala Lajpat Rai", "Bipin Chandra Pal"], a: 0 }
+            ],
+            "Hindi": [
+                { q: "भारत का सबसे छोटा राज्य क्षेत्रफल के हिसाब से कौन सा है?", o: ["गोवा", "सिक्किम", "त्रिपुरा", "नागालैंड"], a: 0 },
+                { q: "थार मरुस्थल में कौन सी नदी बहती है?", o: ["लूनी", "सतलज", "साबरमती", "माही"], a: 0 },
+                { q: "कौन सा राज्य 'भारत का मसाला उद्यान' कहलाता है?", o: ["केरल", "तमिलनाडु", "कर्नाटक", "आंध्र प्रदेश"], a: 0 },
+                { q: "भारत की सबसे बड़ी खारे पानी की झील कौन सी है?", o: ["चिल्का", "सांभर", "पुलिकट", "कोल्लेरु"], a: 0 },
+                { q: "कौन सा शहर 'भारत की सिलिकॉन वैली' कहलाता है?", o: ["बेंगलुरु", "हैदराबाद", "पुणे", "चेन्नई"], a: 0 },
+                { q: "कौन सा राज्य सात राज्यों से अपनी सीमा साझा करता है?", o: ["असम", "उत्तर प्रदेश", "मध्य प्रदेश", "छत्तीसगढ़"], a: 0 },
+                { q: "भारत का सबसे नम स्थान कौन सा है?", o: ["मॉसिनराम", "चेरापूंजी", "दार्जिलिंग", "अगुम्बे"], a: 0 },
+                { q: "बंगाल की खाड़ी में कौन सा द्वीप समूह है?", o: ["अंडमान और निकोबार", "लक्षद्वीप", "दमन और दीव", "पुडुचेरी"], a: 0 },
+                { q: "सुंदरबन डेल्टा कौन सी नदी बनाती है?", o: ["गंगा", "ब्रह्मपुत्र", "हुगली", "मेघना"], a: 0 },
+                { q: "कौन सा राज्य अपने चाय बागानों के लिए जाना जाता है?", o: ["असम", "पश्चिम बंगाल", "हिमाचल प्रदेश", "उत्तराखंड"], a: 0 },
+                { q: "भारत का सबसे ऊंचा बांध कौन सा है?", o: ["टिहरी", "भाखड़ा", "हिराकुड", "सरदार सरोवर"], a: 0 },
+                { q: "किस राज्य में सबसे ज्यादा राष्ट्रीय उद्यान हैं?", o: ["मध्य प्रदेश", "राजस्थान", "उत्तराखंड", "असम"], a: 0 },
+                { q: "यमुना नदी के किनारे कौन सा शहर है?", o: ["दिल्ली", "लखनऊ", "कानपुर", "वाराणसी"], a: 0 },
+                { q: "भारत का एकमात्र सक्रिय ज्वालामुखी कौन सा है?", o: ["बैरन द्वीप", "नारकोंडम", "डक्कन ट्रैप्स", "धिनोधर"], a: 0 },
+                { q: "कौन सा राज्य केसर का सबसे बड़ा उत्पादक है?", o: ["जम्मू और कश्मीर", "हिमाचल प्रदेश", "उत्तराखंड", "सिक्किम"], a: 0 },
+                { q: "2025 तक भारत के वर्तमान राष्ट्रपति कौन हैं?", o: ["द्रौपदी मुर्मू", "राम नाथ कोविंद", "प्रणब मुखर्जी", "ए.पी.जे. अब्दुल कलाम"], a: 0 },
+                { q: "लोकसभा सीटों के हिसाब से सबसे बड़ा राज्य कौन सा है?", o: ["उत्तर प्रदेश", "महाराष्ट्र", "पश्चिम बंगाल", "बिहार"], a: 0 },
+                { q: "भारत के मुख्य न्यायाधीश को कौन नियुक्त करता है?", o: ["राष्ट्रपति", "प्रधानमंत्री", "संसद", "सर्वोच्च न्यायालय"], a: 0 },
+                { q: "कौन सा अनुच्छेद अस्पृश्यता के उन्मूलन के लिए है?", o: ["अनुच्छेद 17", "अनुच्छेद 15", "अनुच्छेद 21", "अनुच्छेद 25"], a: 0 },
+                { q: "भारत में कितने केंद्र शासित प्रदेश हैं?", o: ["8", "7", "9", "10"], a: 0 },
+                { q: "राष्ट्रीय चुनाव कौन आयोजित करता है?", o: ["चुनाव आयोग", "संसद", "सर्वोच्च न्यायालय", "गृह मंत्रालय"], a: 0 },
+                { q: "भारत के सबसे लंबे समय तक सेवा करने वाले प्रधानमंत्री कौन थे?", o: ["जवाहरलाल नेहरू", "इंदिरा गांधी", "नरेंद्र मोदी", "मनमोहन सिंह"], a: 0 },
+                { q: "कौन सा राज्य द्विसदनीय विधायिका वाला है?", o: ["कर्नाटक", "गुजरात", "राजस्थान", "केरल"], a: 0 },
+                { q: "कौन सा संशोधन पंचायती राज लाया?", o: ["73वां", "74वां", "42वां", "61वां"], a: 0 },
+                { q: "उपराष्ट्रपति को कौन हटा सकता है?", o: ["संसद", "राष्ट्रपति", "सर्वोच्च न्यायालय", "प्रधानमंत्री"], a: 0 },
+                { q: "क्षेत्रफल के हिसाब से सबसे छोटा लोकसभा निर्वाचन क्षेत्र कौन सा है?", o: ["लक्षद्वीप", "चांदनी चौक", "दमन और दीव", "पुडुचेरी"], a: 0 },
+                { q: "कौन सा अनुच्छेद मौलिक कर्तव्यों को परिभाषित करता है?", o: ["अनुच्छेद 51A", "अनुच्छेद 21", "अनुच्छेद 19", "अनुच्छेद 32"], a: 0 },
+                { q: "लोकसभा का पहला अध्यक्ष कौन था?", o: ["जी.वी. मावलंकर", "एम.ए. अयंगर", "सरदार हुकम सिंह", "नीलम संजीव रेड्डी"], a: 0 },
+                { q: "किस राज्य ने सबसे पहले जीएसटी लागू किया?", o: ["असम", "हरियाणा", "जम्मू और कश्मीर", "गुजरात"], a: 0 },
+                { q: "विदेशी मामलों का मंत्रालय कौन सा है?", o: ["विदेश मंत्रालय", "गृह मंत्रालय", "रक्षा मंत्रालय", "वित्त मंत्रालय"], a: 0 },
+                { q: "भारत के लिए समुद्री मार्ग किसने खोजा?", o: ["वास्को द गामा", "क्रिस्टोफर कोलंबस", "फर्डिनेंड मैगलन", "मार्को पोलो"], a: 0 },
+                { q: "लाल किला किस सम्राट ने बनवाया?", o: ["शाहजहां", "अकबर", "जहांगीर", "बाबर"], a: 0 },
+                { q: "हल्दीघाटी का युद्ध कब हुआ?", o: ["1576", "1526", "1757", "1857"], a: 0 },
+                { q: "कोलकाता शहर की स्थापना किसने की?", o: ["जॉब चार्नॉक", "रॉबर्ट क्लाइव", "वॉरेन हेस्टिंग्स", "लॉर्ड डलहौजी"], a: 0 },
+                { q: "किस शासक ने 'डॉक्ट्रिन ऑफ लैप्स' नीति शुरू की?", o: ["लॉर्ड डलहौजी", "लॉर्ड वेलेजली", "लॉर्ड कॉर्नवालिस", "लॉर्ड कर्जन"], a: 0 },
+                { q: "भारतीय राष्ट्रीय कांग्रेस की स्थापना कब हुई?", o: ["1885", "1905", "1919", "1947"], a: 0 },
+                { q: "1857 के विद्रोह में दिल्ली का नेता कौन था?", o: ["बहादुर शाह जफर", "रानी लक्ष्मीबाई", "तात्या टोपे", "नाना साहिब"], a: 0 },
+                { q: "भारत का स्वर्ण युग किस वंश के दौरान था?", o: ["गुप्त", "मौर्य", "चोल", "मुगल"], a: 0 },
+                { q: "अशोक ने बौद्ध धर्म कब अपनाया?", o: ["कलिंग युद्ध के बाद", "कलिंग युद्ध से पहले", "मौर्य युद्ध के दौरान", "गुप्त युद्ध के बाद"], a: 0 },
+                { q: "अर्थशास्त्र किसने लिखा?", o: ["चाणक्य", "कालिदास", "तुलसीदास", "वाल्मीकि"], a: 0 },
+                { q: "किस घटना ने ब्रिटिश शासन की शुरुआत की?", o: ["प्लासी का युद्ध", "बक्सर का युद्ध", "सिपाही विद्रोह", "दांडी मार्च"], a: 0 },
+                { q: "दिल्ली की पहली महिला शासक कौन थी?", o: ["रजिया सुल्ताना", "चाँद बीबी", "नूर जहां", "जोधा बाई"], a: 0 },
+                { q: "बंगाल का विभाजन कब रद्द हुआ?", o: ["1911", "1905", "1920", "1947"], a: 0 },
+                { q: "कुतुब मीनार किस राजा ने बनवाया?", o: ["कुतुब-उद-दीन ऐबक", "इल्तुतमिश", "अलाउद्दीन खिलजी", "फिरोज शाह"], a: 0 },
+                { q: "स्वदेशी आंदोलन किसने शुरू किया?", o: ["बाल गंगाधर तिलक", "गोपाल कृष्ण गोखले", "लाला लाजपत राय", "बिपिन चंद्र पाल"], a: 0 }
+            ]
+        };
 
-            // Political Science Questions (15)
-            { q: "Who was India's first Prime Minister?", o: ["Nehru", "Gandhi", "Patel", "Ambedkar"], a: 0 },
-            { q: "How many states are there in India?", o: ["28", "29", "27", "30"], a: 0 },
-            { q: "Who is known as the Father of the Indian Constitution?", o: ["B.R. Ambedkar", "Nehru", "Gandhi", "Patel"], a: 0 },
-            { q: "When was the Indian Constitution adopted?", o: ["1950", "1947", "1949", "1952"], a: 0 },
-            { q: "Who appoints the President of India?", o: ["Electoral College", "Prime Minister", "Parliament", "Supreme Court"], a: 0 },
-            { q: "Which article guarantees equality before law?", o: ["Article 14", "Article 19", "Article 21", "Article 32"], a: 0 },
-            { q: "How many Lok Sabha seats are there?", o: ["543", "545", "552", "530"], a: 0 },
-            { q: "Who was India's first female President?", o: ["Pratibha Patil", "Indira Gandhi", "Sarojini Naidu", "Sonia Gandhi"], a: 0 },
-            { q: "Which party won India's first general election?", o: ["Congress", "BJP", "CPI", "Jan Sangh"], a: 0 },
-            { q: "What is India's upper house called?", o: ["Rajya Sabha", "Lok Sabha", "Vidhan Sabha", "Sansad"], a: 0 },
-            { q: "Who can declare a national emergency?", o: ["President", "Prime Minister", "Parliament", "Supreme Court"], a: 0 },
-            { q: "Which state has the most Lok Sabha seats?", o: ["Uttar Pradesh", "Maharashtra", "Bihar", "West Bengal"], a: 0 },
-            { q: "What is the term of the President of India?", o: ["5 years", "4 years", "6 years", "7 years"], a: 0 },
-            { q: "Which amendment lowered voting age to 18?", o: ["61st", "42nd", "73rd", "86th"], a: 0 },
-            { q: "Who chairs Rajya Sabha?", o: ["Vice President", "President", "Prime Minister", "Speaker"], a: 0 },
+        let currentQuestion = 0, score = 0, playerName = "", leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [], wrongAnswers = [];
 
-            // History Questions (15)
-            { q: "When did India gain independence?", o: ["1947", "1950", "1945", "1948"], a: 0 },
-            { q: "Who was the last Mughal Emperor?", o: ["Bahadur Shah II", "Akbar", "Aurangzeb", "Shah Jahan"], a: 0 },
-            { q: "Who led the Dandi Salt March?", o: ["Gandhi", "Nehru", "Patel", "Bose"], a: 0 },
-            { q: "Which battle established British rule in India?", o: ["Plassey", "Buxar", "Panipat", "Haldighati"], a: 0 },
-            { q: "Who founded the Maurya Empire?", o: ["Chandragupta", "Ashoka", "Bindusara", "Chanakya"], a: 0 },
-            { q: "When was the Battle of Panipat fought?", o: ["1526", "1556", "1761", "1857"], a: 0 },
-            { q: "Who built the Taj Mahal?", o: ["Shah Jahan", "Akbar", "Jahangir", "Aurangzeb"], a: 0 },
-            { q: "Which movement was launched in 1942?", o: ["Quit India", "Non-Cooperation", "Civil Disobedience", "Swadeshi"], a: 0 },
-            { q: "Who was the first Governor-General of India?", o: ["Warren Hastings", "Dalhousie", "Canning", "Mountbatten"], a: 0 },
-            { q: "When did the Jallianwala Bagh massacre occur?", o: ["1919", "1921", "1917", "1920"], a: 0 },
-            { q: "Who founded the Gupta Empire?", o: ["Sri Gupta", "Chandragupta I", "Samudragupta", "Kumaragupta"], a: 0 },
-            { q: "Which dynasty built the Khajuraho temples?", o: ["Chandela", "Pallava", "Chola", "Rashtrakuta"], a: 0 },
-            { q: "When was the East India Company established?", o: ["1600", "1757", "1858", "1498"], a: 0 },
-            { q: "Who started the Bhakti movement?", o: ["Ramanuja", "Kabir", "Tulsidas", "Mirabai"], a: 0 },
-            { q: "Which war ended Mughal rule?", o: ["1857 Revolt", "Plassey", "Buxar", "Panipat III"], a: 0 }
-        ];
+        function initLanguageBar() {
+            document.getElementById('languageBar').innerHTML = languages.map(lang => 
+                `<button onclick="selectLanguage('${lang}')" ${lang === selectedLanguage ? 'class="active"' : ''}>${lang}</button>`).join('');
+            updateUI();
+        }
 
-        let currentQuestion = 0;
-        let score = 0;
-        let playerName = "";
-        let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+        function selectLanguage(lang) {
+            selectedLanguage = lang;
+            document.querySelectorAll('.language-bar button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            updateUI();
+        }
+
+        function updateUI() {
+            const t = translations[selectedLanguage];
+            document.querySelector('h1').textContent = t.title;
+            document.getElementById('playerName').placeholder = t.placeholder;
+            document.querySelector('#registerSection button').textContent = t.start;
+            document.querySelector('#leaderboardSection button').textContent = t.tryAgain;
+        }
 
         function startQuiz() {
             playerName = document.getElementById('playerName').value.trim();
-            if (!playerName) {
-                alert("Please enter your name to begin the odyssey!");
-                return;
-            }
+            if (!playerName) return alert("Enter your name!");
             document.getElementById('registerSection').classList.remove('active');
             document.getElementById('quizSection').classList.add('active');
+            wrongAnswers = [];
             showQuestion();
         }
 
         function showQuestion() {
-            const q = questions[currentQuestion];
+            const q = questions[selectedLanguage][currentQuestion];
             document.getElementById('question').innerHTML = `<h3>${currentQuestion + 1}. ${q.q}</h3>`;
-            const optionsDiv = document.getElementById('options');
-            optionsDiv.innerHTML = '';
-            q.o.forEach((option, index) => {
-                const btn = document.createElement('button');
-                btn.textContent = option;
-                btn.onclick = () => checkAnswer(index);
-                optionsDiv.appendChild(btn);
-            });
-            updateProgress();
+            document.getElementById('options').innerHTML = q.o.map((opt, i) => `<button onclick="checkAnswer(${i})">${opt}</button>`).join('');
+            document.getElementById('progressBar').style.width = `${(currentQuestion / questions[selectedLanguage].length) * 100}%`;
         }
 
         function checkAnswer(selected) {
-            if (selected === questions[currentQuestion].a) score++;
+            const q = questions[selectedLanguage][currentQuestion];
+            if (selected !== q.a) wrongAnswers.push({ question: q.q, selected: q.o[selected], correct: q.o[q.a] });
+            if (selected === q.a) score++;
             currentQuestion++;
-            if (currentQuestion < questions.length) {
-                showQuestion();
-            } else {
-                showLeaderboard();
-            }
-        }
-
-        function updateProgress() {
-            const progress = (currentQuestion / questions.length) * 100;
-            document.getElementById('progressBar').style.width = `${progress}%`;
+            currentQuestion < questions[selectedLanguage].length ? showQuestion() : showLeaderboard();
         }
 
         function showLeaderboard() {
             document.getElementById('quizSection').classList.remove('active');
             document.getElementById('leaderboardSection').classList.add('active');
-            leaderboard.push({ name: playerName, score: score });
+            leaderboard.push({ name: playerName, score });
             leaderboard.sort((a, b) => b.score - a.score);
             localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
-            
-            const leaderboardList = document.getElementById('leaderboard');
-            leaderboardList.innerHTML = '';
-            leaderboard.forEach(player => {
-                const li = document.createElement('li');
-                li.textContent = `${player.name}: ${player.score}/${questions.length}`;
-                leaderboardList.appendChild(li);
-            });
+            document.getElementById('leaderboard').innerHTML = leaderboard.map(p => `<li>${p.name}: ${p.score}/${questions[selectedLanguage].length}</li>`).join('');
+            const t = translations[selectedLanguage];
+            document.getElementById('wrongAnswers').innerHTML = `<h3>${t.mistakes}</h3>` + (wrongAnswers.length ? 
+                wrongAnswers.map((wa, i) => `<p>${i + 1}. Q: ${wa.question}<br>Wrong: ${wa.selected}<br>Correct: ${wa.correct}</p>`).join('') : `<p>${t.allCorrect}</p>`);
         }
 
         function restartQuiz() {
-            currentQuestion = 0;
-            score = 0;
+            currentQuestion = 0; score = 0;
             document.getElementById('leaderboardSection').classList.remove('active');
             document.getElementById('registerSection').classList.add('active');
             document.getElementById('playerName').value = '';
         }
+
+        window.onload = initLanguageBar;
     </script>
 </body>
 </html>
