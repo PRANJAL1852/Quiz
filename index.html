@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>India Quiz Challenge</title>
+    <title>India Quiz Odyssey</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -13,85 +15,133 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow-x: hidden;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
             width: 100%;
-            max-width: 800px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            max-width: 900px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .container:hover {
-            transform: translateY(-5px);
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: glow 15s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         h1 {
-            color: #2c3e50;
+            color: #e94560;
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            font-size: 3em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #e94560, #0f3460);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .register-section, .quiz-section, .leaderboard-section {
             display: none;
+            position: relative;
+            z-index: 1;
         }
 
         .active {
             display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         input, button {
             width: 100%;
             padding: 15px;
-            margin: 10px 0;
+            margin: 15px 0;
             border: none;
-            border-radius: 25px;
-            font-size: 1.1em;
+            border-radius: 50px;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
         }
 
         input {
-            background: #f0f2f5;
-            color: #333;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding-left: 20px;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #e94560;
+            box-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
         }
 
         button {
-            background: linear-gradient(45deg, #ff4757, #ff6b81);
+            background: linear-gradient(45deg, #e94560, #f39c12);
             color: white;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         button:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(233, 69, 96, 0.4);
         }
 
         .quiz-question {
-            background: linear-gradient(45deg, #45aaf2, #778beb);
-            padding: 20px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #0f3460, #1a1a2e);
+            padding: 30px;
+            border-radius: 20px;
             margin: 20px 0;
-            color: white;
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .options button {
-            background: rgba(255, 255, 255, 0.2);
-            margin: 5px 0;
-            width: 100%;
+            background: linear-gradient(45deg, #533483, #e94560);
+            margin: 10px 0;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .options button:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(45deg, #e94560, #533483);
+            transform: translateX(5px);
         }
 
         .leaderboard-section {
@@ -104,36 +154,44 @@
         }
 
         .leaderboard-list li {
-            background: linear-gradient(45deg, #feca57, #ff9f43);
-            margin: 10px 0;
-            padding: 15px;
+            background: linear-gradient(45deg, #f39c12, #e94560);
+            margin: 15px 0;
+            padding: 20px;
             border-radius: 15px;
-            color: #2c3e50;
-            font-weight: bold;
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .leaderboard-list li:hover {
+            transform: scale(1.03);
         }
 
         .progress {
-            height: 10px;
-            background: #ddd;
-            border-radius: 5px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
             margin: 20px 0;
+            overflow: hidden;
         }
 
         .progress-bar {
             height: 100%;
-            background: linear-gradient(45deg, #00ddeb, #54a0ff);
-            border-radius: 5px;
-            transition: width 0.3s ease;
+            background: linear-gradient(45deg, #e94560, #f39c12);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>India Quiz Challenge</h1>
+        <h1>India Quiz Odyssey</h1>
 
         <div class="register-section active" id="registerSection">
-            <input type="text" id="playerName" placeholder="Enter your name">
-            <button onclick="startQuiz()">Register & Start Quiz</button>
+            <input type="text" id="playerName" placeholder="Enter Your Name">
+            <button onclick="startQuiz()">Embark on Journey</button>
         </div>
 
         <div class="quiz-section" id="quizSection">
@@ -145,9 +203,9 @@
         </div>
 
         <div class="leaderboard-section" id="leaderboardSection">
-            <h2>Leaderboard</h2>
+            <h2>Hall of Legends</h2>
             <ul class="leaderboard-list" id="leaderboard"></ul>
-            <button onclick="restartQuiz()">Play Again</button>
+            <button onclick="restartQuiz()">New Adventure</button>
         </div>
     </div>
 
@@ -213,7 +271,7 @@
         function startQuiz() {
             playerName = document.getElementById('playerName').value.trim();
             if (!playerName) {
-                alert("Please enter your name!");
+                alert("Please enter your name to begin the odyssey!");
                 return;
             }
             document.getElementById('registerSection').classList.remove('active');
